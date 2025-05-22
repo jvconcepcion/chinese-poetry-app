@@ -94,7 +94,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Acknowledgments
 
-- Poem data sourced from [https://www.gushiwen.cn](古诗文网)
+- Poem data sourced from [古诗文网](https://www.gushiwen.cn)
 - Translations from various classical Chinese poetry sources
 - Inspired by Chinese cultural heritage
 
