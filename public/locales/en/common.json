@@ -1,7 +1,8 @@
 {
   "header": {
     "title": "Chinese Poetry Collection",
-    "search_placeholder": "Search poems or poets..."
+    "search_placeholder": "Search poems or poets...",
+    "all_loaded": "All content has been loaded"
   },
   "footer": {
     "text": "Exploring the treasures of Chinese classical poetry"

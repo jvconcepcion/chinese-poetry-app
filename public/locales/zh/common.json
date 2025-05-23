@@ -1,7 +1,8 @@
 {
   "header": {
     "title": "中国诗词库",
-    "search_placeholder": "搜索诗词或诗人..."
+    "search_placeholder": "搜索诗词或诗人...",
+    "all_loaded": "已加载全部内容"
   },
   "footer": {
     "text": "探索中华古典诗词瑰宝"
