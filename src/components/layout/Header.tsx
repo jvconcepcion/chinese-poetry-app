@@ -13,9 +13,9 @@ export const Header = () => {
 
   return (
     <header
-      className='sticky top-0 bg-transparent z-10 w-full'
+      className='sticky top-0 bg-gradient-to-r from-[#5e5d62]/50 via-white/30 to-blue-950/20 z-10 w-full'
     >
-      <div className='container mx-auto px-4 pt-8 max-w-4xl flex gap-10'>
+      <div className='container mx-auto px-4 py-4 md:py-8 max-w-4xl flex gap-10'>
         <Image
           className='hidden md:block'
           src={'/assets/images/site-icon.png'}
@@ -25,7 +25,7 @@ export const Header = () => {
         />
         <div className='w-full'>
           <div className='flex items-center justify-between mb-4'>
-            <h1 className='text-base md:text-2xl font-bold text-red-800 flex gap-1 items-center'>
+            <h1 className='text-lg md:text-4xl font-bold text-red-800 flex gap-1 items-center text-outline-white'>
               <Image
                 className='w-14 h-14 block md:hidden'
                 src={'/assets/images/site-icon.png'}
