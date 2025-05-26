@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 
-export const Header = () => {
+export const Header: React.FC = () => {
   const { t } = useTranslation('common');
   const router = useRouter();
 
@@ -33,7 +33,7 @@ export const Header = () => {
                 height={100}
                 alt=''
               />
-              {t('header.title')}
+              {t('header.navTitle')}
             </h1>
             <select
               onChange={changeLanguage}

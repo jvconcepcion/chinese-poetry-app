@@ -1,6 +1,8 @@
 {
   "header": {
-    "title": "中国诗词库",
+    "title": "中国古典诗歌",
+    "subtitle": "穿越千年的诗韵回响",
+    "navTitle": "中国诗词库",
     "search_placeholder": "搜索诗词或诗人...",
     "all_loaded": "已加载全部内容"
   },

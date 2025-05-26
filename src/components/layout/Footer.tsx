@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
 import Svg from '../ui/Svg';
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   const { t } = useTranslation('common');
 
   return (

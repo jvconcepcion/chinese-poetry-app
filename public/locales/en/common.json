@@ -1,6 +1,8 @@
 {
   "header": {
-    "title": "Chinese Poetry Collection",
+    "title": "Classical Chinese Poetry",
+    "subtitle": "Whispers of Ancient Wisdom Across Millennia",
+    "navTitle": "Chinese Poetry Collection",
     "search_placeholder": "Search poems or poets...",
     "all_loaded": "All content has been loaded"
   },

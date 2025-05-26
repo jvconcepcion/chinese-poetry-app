@@ -10,7 +10,7 @@ interface PoemCardProps {
   locale?: string;
 }
 
-const PoemCard = ({ poem, index }: PoemCardProps) => {
+export const PoemCard = ({ poem, index }: PoemCardProps) => {
 const isMobile = useIsMobile();
 const parallaxOptions = useMemo(() => {
 
@@ -78,5 +78,3 @@ const cardParallax = useParallax<HTMLDivElement>(parallaxOptions);
     </div>
   );
 };
-
-export default PoemCard;
