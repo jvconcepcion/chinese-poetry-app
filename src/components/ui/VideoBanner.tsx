@@ -29,9 +29,8 @@ export const VideoBanner: React.FC<VideoBanner> = ({
           muted
           loop
           className=' w-full h-full object-cover'
-          poster='/assets/images/video-poster.jpg'
+          poster='/assets/images/chinese-poetry-poster.png'
         >
-          <source src={`${video}.webm`} type='video/webm' />
           <source src={`${video}.mp4`} type='video/mp4' />
         </video>
         <div className='absolute inset-0 bg-black/40' />

@@ -8,17 +8,26 @@ export const useInfiniteScroll = (searchTerm: string) => {
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
+  // Reset to first page when search term changes
+  useEffect(() => {
+    setPage(1);
+  }, [searchTerm]);
+
   useEffect(() => {
     const loadPoems = async () => {
       setIsLoading(true);
       try {
-        const response: PoemListResponse = await fetchPoems(searchTerm, page);
+        const response = await fetchPoems(searchTerm, page);
         
-        setPoems(prev => 
-          page === 1 
-            ? response.poems 
-            : [...prev, ...response.poems]
-        );
+        setPoems(prev => {
+          // Reset results when page is 1 (new search or initial load)
+          if (page === 1) return response.poems;
+          
+          // Merge while preventing duplicates
+          const existingIds = new Set(prev.map(p => p.id));
+          const newPoems = response.poems.filter(p => !existingIds.has(p.id));
+          return [...prev, ...newPoems];
+        });
         
         setHasMore(response.hasMore);
       } finally {
@@ -29,10 +38,5 @@ export const useInfiniteScroll = (searchTerm: string) => {
     loadPoems();
   }, [searchTerm, page]);
 
-  return {
-    poems,
-    hasMore,
-    isLoading,
-    loadMore: () => setPage(p => p + 1)
-  };
+  return { poems, hasMore, isLoading, loadMore: () => setPage(p => p + 1) };
 };

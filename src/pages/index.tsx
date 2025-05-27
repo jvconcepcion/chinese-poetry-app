@@ -1,25 +1,32 @@
 import i18nConfig from '../../next-i18next.config';
-import { useState, useRef } from 'react';
+import { useContext, useState, useRef } from 'react';
 import { useTranslation } from 'next-i18next';
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll';
 import { useRouter } from 'next/router';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { SearchPoetryContext } from '@/lib/context';
 import {
-Header,
-Footer,
-VideoBanner,
-ParallaxImage,
-InfiniteScrollObserver,
-LoadingSkeleton,
-PoemCard,
+  Header,
+  Footer,
+  VideoBanner,
+  ParallaxImage,
+  InfiniteScrollObserver,
+  LoadingSkeleton,
+  PoemCard,
 } from '@/components';
 
 export default function Home() {
   const router = useRouter();
   const { locale } = router;
   const { t } = useTranslation('common');
+  const searchContext = useContext(SearchPoetryContext);
 
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  if (!searchContext) {
+    throw new Error('SearchPoetryContext is missing in the component tree');
+  };
+
+  const { searchTerm } = searchContext;
+  // const [searchTerm, setSearchTerm] = useState<string>('');
   const { poems, hasMore, isLoading, loadMore } = useInfiniteScroll(searchTerm);
 
   const contentRef = useRef<HTMLDivElement>(null);
@@ -28,7 +35,7 @@ export default function Home() {
     <>
       <main className=''>
         <section className='relative h-screen'>
-          <VideoBanner 
+          <VideoBanner
             title={t('header.title')}
             subtitle={t('header.subtitle')}
             className='flex items-center justify-center md:justify-start ml-4 md:ml-8'

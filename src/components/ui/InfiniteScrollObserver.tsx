@@ -10,13 +10,13 @@ export const InfiniteScrollObserver = ({
   rootMargin = '100px'
 }: InfiniteScrollObserverProps) => {
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        onIntersect();
-      }
-    }, { rootMargin });
+    const observer = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && onIntersect(),
+      { rootMargin }
+    );
 
     const sentinel = document.createElement('div');
+    sentinel.style.height = '1px';
     document.body.appendChild(sentinel);
     observer.observe(sentinel);
 

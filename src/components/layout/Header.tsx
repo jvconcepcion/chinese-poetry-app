@@ -1,14 +1,30 @@
+import { useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import { SearchPoetryContext } from '@/lib/context';
+import Svg from '@/components/ui/Svg';
 import Image from 'next/image';
 
 export const Header: React.FC = () => {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const searchContext = useContext(SearchPoetryContext);
+
+  if (!searchContext) {
+    throw new Error('SearchPoetryContext is missing in the component tree');
+  };
+
+  const { searchTerm, setSearchTerm } = searchContext;
+  const [localSearch, setLocalSearch] = useState(searchTerm);
 
   const changeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const locale = e.target.value;
     router.push(router.pathname, router.asPath, { locale });
+  };
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSearchTerm(localSearch);
   };
 
   return (
@@ -45,11 +61,16 @@ export const Header: React.FC = () => {
             </select>
 
           </div>
-          <input
-            type='text'
-            placeholder={t('header.search_placeholder')}
-            className='w-full p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500'
-          />
+           <form onSubmit={handleSearch}  className='flex bg-white rounded-lg shadow-sm py-2'>
+            <input
+              type='text'
+              placeholder={t('header.search_placeholder')}
+              className='w-full p-3 focus:outline-none border-r'
+              value={localSearch}
+              onChange={(e) => setLocalSearch(e.target.value)}
+            />
+            <button className='px-6 hover:text-red-800'><Svg component='magnifier' /></button>
+          </form>
         </div>
       </div>
     </header>
